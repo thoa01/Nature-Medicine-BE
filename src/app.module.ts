@@ -6,6 +6,8 @@ import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
 import { softDeletePlugin } from 'soft-delete-plugin-mongoose'
+import { HerbsModule } from './herbs/herbs.module';
+import { FilesModule } from './files/files.module';
 @Module({
   imports: [
     MongooseModule.forRootAsync({
@@ -23,7 +25,9 @@ import { softDeletePlugin } from 'soft-delete-plugin-mongoose'
       isGlobal: true
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
+    HerbsModule,
+    FilesModule
   ],
   controllers: [AppController],
   providers: [AppService]
