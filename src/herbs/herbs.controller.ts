@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common'
 import { HerbsService } from './herbs.service'
 import { CreateHerbDto } from './dto/create-herb.dto'
 import { UpdateHerbDto } from './dto/update-herb.dto'
@@ -12,27 +12,34 @@ export class HerbsController {
   @ResponseMessage('Add a herb')
   @Post()
   create(@Body() createHerbDto: CreateHerbDto) {
-    // return this.herbsService.create(createHerbDto)
-    return 'no'
+    return this.herbsService.create(createHerbDto)
   }
 
+  @Public()
+  @ResponseMessage('Get all herbs')
   @Get()
-  findAll() {
-    return this.herbsService.findAll()
+  findAll(@Query() qs: string, @Query('limit') limit: number, @Query('page') page: number) {
+    return this.herbsService.findAll(qs, limit, page)
   }
 
+  @Public()
+  @ResponseMessage('Get herb information by id')
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.herbsService.findOne(+id)
+    return this.herbsService.findOne(id)
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHerbDto: UpdateHerbDto) {
-    return this.herbsService.update(+id, updateHerbDto)
+  @Public()
+  @ResponseMessage('Update a herb')
+  @Patch()
+  update(@Body() updateUserDto: UpdateHerbDto) {
+    return this.herbsService.update(updateUserDto)
   }
 
+  @ResponseMessage('Delete a herb')
+  @Public()
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.herbsService.remove(+id)
+    return this.herbsService.remove(id)
   }
 }

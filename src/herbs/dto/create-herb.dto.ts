@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator' //ko validate object - validate object thì dùng class-transformer 7663
 
 export class CreateHerbDto {
-  // @IsNotEmpty()
+  @IsNotEmpty()
   name: string
 
   characteristics: string
@@ -16,10 +16,10 @@ export class CreateHerbDto {
 
   dosage: string
 
-  // @IsNotEmpty()
+  @IsNotEmpty()
   effects: string[]
 
-  // @IsNotEmpty()
+  @IsNotEmpty()
   sideEffects: string[]
 
   someMedicinalPreparations: string[]
@@ -29,4 +29,7 @@ export class CreateHerbDto {
   safetyLevel: string
 
   potentialInteractions: string
+
+  @IsNotEmpty()
+  images: string[]
 }
