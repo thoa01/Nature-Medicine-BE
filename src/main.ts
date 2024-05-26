@@ -17,6 +17,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe()) //config to data validation in dto
   app.use(cookieParser()) //config cookies (lấy coookie từ fe hoặc set cookie cho fe)
   app.enableCors({ origin: '*', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', preflightContinue: false }) //config cors
+  app.getHttpAdapter().getInstance().set('etag', false)
   await app.listen(configService.get('PORT')) //how to use .env in main (special)
 }
 bootstrap()

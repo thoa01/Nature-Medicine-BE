@@ -43,9 +43,15 @@ export class AuthService {
       httpOnly: true,
       maxAge: ms(this.configService.get<string>('JWT_REFRESH_TOKEN_EXPIRE'))
     }) //set refreshToken as cookie //HttpOnly: true chỈ đọc được ở server, client không lấy được //maxAge: milisecond, hết hạn auto xóa cookie trên client
+    // return {
+    //   accessToken: this.jwtService.sign(payload),
+    //   user: { _id, email, role }
+    // }
     return {
-      accessToken: this.jwtService.sign(payload),
-      user: { _id, email, role }
+      data: {
+        accessToken: this.jwtService.sign(payload),
+        user: { _id, email, role }
+      }
     }
   }
 

@@ -33,18 +33,21 @@ export class HerbsService {
       .populate(population)
       .exec()
     return {
-      meta: {
-        currentPage: page,
-        pageSize: limit,
-        totalPages: totalPages,
-        totalItems: totalItems
-      },
-      companies: result
+      data: {
+        meta: {
+          currentPage: page,
+          pageSize: limit,
+          totalPages: totalPages,
+          totalItems: totalItems
+        },
+        herbs: result
+      }
     }
   }
-  findOne(id: string) {
+  async findOne(id: string) {
     if (!mongoose.Types.ObjectId.isValid(id)) return 'Not found herb'
-    return this.herbModel.findOne({ _id: id })
+    const result = await this.herbModel.findOne({ _id: id })
+    return { data: result }
   }
 
   async update(updateHerbDto: UpdateHerbDto) {
@@ -58,5 +61,19 @@ export class HerbsService {
   remove(id: string) {
     if (!mongoose.Types.ObjectId.isValid(id)) return 'Incorrect ID'
     return this.herbModel.softDelete({ _id: id })
+  }
+
+  async getHerbsByIds(herbIds: string[]) {
+    // Kiểm tra xem các herbId có hợp lệ không
+    for (const id of herbIds) {
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return { error: 'Invalid herbId' }
+      }
+    }
+
+    // Lấy thông tin của các Herb dựa trên danh sách herbId
+    const herbs = await this.herbModel.find({ _id: { $in: herbIds } })
+
+    return herbs
   }
 }

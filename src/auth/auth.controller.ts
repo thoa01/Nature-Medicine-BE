@@ -25,7 +25,6 @@ export class AuthController {
     return this.authService.register(registerUserDto)
   }
 
-  @Public()
   @ResponseMessage('Get new refresh token')
   @Get('refresh')
   handleRefreshToken(@Req() req: Request, @Res({ passthrough: true }) response: Response) {
@@ -36,7 +35,7 @@ export class AuthController {
   @ResponseMessage('Get account')
   @Get('account')
   handleGetAccount(@User() user: IUser) {
-    return { user }
+    return { data: { ...user } }
   }
 
   @ResponseMessage('Logout')

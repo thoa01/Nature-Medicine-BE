@@ -7,6 +7,7 @@ import { Herb, HerbSchema } from './schemas/herb.schema'
 @Module({
   imports: [MongooseModule.forFeature([{ name: Herb.name, schema: HerbSchema }])],
   controllers: [HerbsController],
-  providers: [HerbsService]
+  providers: [HerbsService],
+  exports: [HerbsService]
 })
 export class HerbsModule {}
