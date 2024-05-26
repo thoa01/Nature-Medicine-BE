@@ -9,14 +9,14 @@ export class Herb {
   @Prop({ required: true })
   name: string
 
-  @Prop()
-  characteristics: string
+  @Prop({ type: [String] })
+  characteristics: string[]
 
-  @Prop()
-  mechanismOfAction: string
+  @Prop({ type: [String] })
+  mechanismOfAction: string[]
 
-  @Prop()
-  partsUsed: string
+  @Prop({ type: [String] })
+  partsUsed: string[]
 
   @Prop({ type: [String] })
   chemicalCompositions: string[]
@@ -24,29 +24,26 @@ export class Herb {
   @Prop()
   dosageForm: string
 
-  @Prop()
-  dosage: string
+  @Prop({ type: [String] })
+  dosage: string[]
 
   @Prop({ type: [String], required: true })
   effects: string[]
 
-  @Prop({ type: [String], required: true })
+  @Prop({ type: [String] })
   sideEffects: string[]
 
   @Prop({ type: [String] })
   someMedicinalPreparations: string[]
 
-  @Prop()
-  precautions: string
-
-  @Prop()
-  safetyLevel: string
-
-  @Prop()
-  potentialInteractions: string
+  @Prop({ type: [String] })
+  precautions: string[]
 
   @Prop({ type: [String] })
-  images: string[]
+  safetyLevel: string[]
+
+  @Prop({ type: [String] })
+  potentialInteractions: string[]
 
   @Prop()
   createdBy: User
