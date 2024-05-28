@@ -4,17 +4,17 @@ export class CreateHerbDto {
   @IsNotEmpty()
   name: string
 
-  characteristics: string
+  characteristics: string[]
 
-  mechanismOfAction: string
+  mechanismOfAction: string[]
 
-  partsUsed: string
+  partsUsed: string[]
 
   chemicalCompositions: string[]
 
   dosageForm: string
 
-  dosage: string
+  dosage: string[]
 
   @IsNotEmpty()
   effects: string[]
@@ -24,12 +24,11 @@ export class CreateHerbDto {
 
   someMedicinalPreparations: string[]
 
-  precautions: string
+  precautions: string[]
 
-  safetyLevel: string
+  safetyLevel: string[]
 
-  potentialInteractions: string
+  potentialInteractions: string[]
 
-  @IsNotEmpty()
   images: string[]
 }
