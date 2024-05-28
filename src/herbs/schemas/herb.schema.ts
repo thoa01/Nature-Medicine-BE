@@ -45,6 +45,9 @@ export class Herb {
   @Prop({ type: [String] })
   potentialInteractions: string[]
 
+  @Prop({ type: [String] })
+  images: string[]
+
   @Prop()
   createdBy: User
 
