@@ -34,8 +34,9 @@ export class AuthController {
 
   @ResponseMessage('Get account')
   @Get('account')
-  handleGetAccount(@User() user: IUser) {
-    return { data: { ...user } }
+  async handleGetAccount(@User() user: IUser) {
+    const result = await this.authService.getAccount(user)
+    return { data: result }
   }
 
   @ResponseMessage('Logout')
