@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   async login(user: IUser, response: Response) {
-    const { _id, email, role } = user
+    const { _id, email, role, dateOfBirth, fullname, phoneNumber } = user
     const payload = {
       sub: 'token login', //description
       iss: 'from server', //creator
@@ -50,7 +50,7 @@ export class AuthService {
     return {
       data: {
         accessToken: this.jwtService.sign(payload),
-        user: { _id, email, role }
+        user: { _id, email, role, dateOfBirth, fullname, phoneNumber }
       }
     }
   }
@@ -109,5 +109,9 @@ export class AuthService {
     await this.usersService.updateRefreshTokenByIdUser('', user._id)
     response.clearCookie('refreshToken')
     return 'ok'
+  }
+
+  getAccount = async (user: IUser) => {
+    return this.usersService.findOne(user._id)
   }
 }
