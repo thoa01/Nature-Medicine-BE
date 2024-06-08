@@ -5,8 +5,8 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Wishlist, WishlistDocument } from './entities/wishlist.entity'
 import { SoftDeleteModel } from 'soft-delete-plugin-mongoose'
 import mongoose from 'mongoose'
-import { IUser } from 'src/users/users.interface'
-import { HerbsService } from 'src/herbs/herbs.service'
+import { IUser } from '../users/users.interface'
+import { HerbsService } from '../herbs/herbs.service'
 
 @Injectable()
 export class WishlistsService {

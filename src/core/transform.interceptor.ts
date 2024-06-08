@@ -2,7 +2,7 @@ import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nes
 import { Reflector } from '@nestjs/core'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { RESPONSE_MESSAGE } from 'src/decorator/customize'
+import { RESPONSE_MESSAGE } from '../decorator/customize'
 
 export interface Response<T> {
   statusCode: number

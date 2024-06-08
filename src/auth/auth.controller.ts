@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common'
 import { Request, Response } from 'express'
-import { Public, ResponseMessage, User } from 'src/decorator/customize'
-import { RegisterUserDto } from 'src/users/dto/create-user.dto'
-import { IUser } from 'src/users/users.interface'
+import { Public, ResponseMessage, User } from '../decorator/customize'
+import { RegisterUserDto } from '../users/dto/create-user.dto'
+import { IUser } from '../users/users.interface'
 import { AuthService } from './auth.service'
 import { LocalAuthGuard } from './local-auth.guard'
 
