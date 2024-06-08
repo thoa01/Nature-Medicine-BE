@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { HerbsService } from './herbs.service'
 import { CreateHerbDto } from './dto/create-herb.dto'
 import { UpdateHerbDto } from './dto/update-herb.dto'
-import { Public, ResponseMessage } from 'src/decorator/customize'
+import { Public, ResponseMessage } from '../decorator/customize'
 
 @Controller('herbs')
 export class HerbsController {

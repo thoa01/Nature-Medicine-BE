@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { WishlistsService } from './wishlists.service'
 import { CreateWishlistDto } from './dto/create-wishlist.dto'
 import { UpdateWishlistDto } from './dto/update-wishlist.dto'
-import { ResponseMessage, User } from 'src/decorator/customize'
-import { IUser } from 'src/users/users.interface'
+import { ResponseMessage, User } from '../decorator/customize'
+import { IUser } from '../users/users.interface'
 
 @Controller('wishlists')
 export class WishlistsController {
