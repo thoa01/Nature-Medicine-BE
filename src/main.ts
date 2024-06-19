@@ -6,10 +6,12 @@ import { AppModule } from './app.module'
 import { JwtAuthGuard } from './auth/jwt-auth.guard'
 import { TransformInterceptor } from './core/transform.interceptor'
 import { join } from 'path'
+import { configSwagger } from './configs/api-docs.config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const configService = app.get(ConfigService)
+  configSwagger(app)
   const reflector = app.get(Reflector)
   app.useGlobalGuards(new JwtAuthGuard(reflector)) //dùng JwtAuthGuard global, bảo vệ tất cả route // ko truyền lên jwt thì kh thể truy cập
   app.useGlobalInterceptors(new TransformInterceptor(reflector)) //config interceptor
