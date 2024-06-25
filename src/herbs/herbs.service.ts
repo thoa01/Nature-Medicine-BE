@@ -21,7 +21,7 @@ export class HerbsService {
     delete filter.limit
 
     const offset = (+page - 1) * +limit
-    const defaultLimit = +limit ? +limit : 16
+    const defaultLimit = +limit ? +limit : 25
     const totalItems = (await this.herbModel.find(filter)).length
     const totalPages = Math.ceil(totalItems / defaultLimit)
 
